@@ -1,6 +1,8 @@
 require File.expand_path('../boot', __FILE__)
 
-require 'rails/all'
+require "action_controller/railtie"
+require "action_mailer/railtie"
+require "active_resource/railtie"
 
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
@@ -38,5 +40,9 @@ module SokRailMongo
 
     # Enable the asset pipeline
     config.assets.enabled = true
+    
+    config.generators do |g|
+      g.orm = :mongo_mapper
+    end
   end
 end
