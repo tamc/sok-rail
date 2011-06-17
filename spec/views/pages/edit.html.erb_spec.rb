@@ -14,7 +14,7 @@ describe "pages/edit.html.erb" do
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "form", :action => pages_path(@page), :method => "post" do
       assert_select "input#page_title", :name => "page[title]"
-      assert_select "input#page_content", :name => "page[content]"
+      assert_select "textarea#page_content", :name => "page[content]"
     end
   end
 end
