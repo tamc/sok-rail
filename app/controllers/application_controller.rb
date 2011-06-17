@@ -5,6 +5,12 @@ class ApplicationController < ActionController::Base
   
   private
   
+  def require_user
+    return true if User.current
+    redirect_to new_session_url
+    false
+  end
+  
   def set_user
     User.current = user_from_session #|| user_from_cookie || user_from_http_header
   end

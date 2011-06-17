@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
   
+  before_filter :require_user
+  
   def home
     redirect_to(Page.first || new_page_url)
   end
