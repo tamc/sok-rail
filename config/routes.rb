@@ -9,6 +9,8 @@ SokRailMongo::Application.routes.draw do
 
   resources :sessions
   
+  match ':id' => "pages#show", :as => :page
+  
   root :to => 'pages#home'
 
   # The priority is based upon order of creation:

@@ -2,7 +2,12 @@ require "spec_helper"
 
 describe PagesController do
   describe "routing" do
-
+    
+    it "has a shortcut that routes just an id to pages show" do
+      get("/4dfbc6b2b172c0305d00001d").should route_to("pages#show", :id => "4dfbc6b2b172c0305d00001d")
+      page_path(:id => '4dfbc6b2b172c0305d00001d').should == "/4dfbc6b2b172c0305d00001d"
+    end
+    
     it "routes to #index" do
       get("/pages").should route_to("pages#index")
     end
