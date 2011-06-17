@@ -29,7 +29,7 @@ describe SessionsController do
         session['user_id'].should == @user.id
       end
 
-      it "redirects to the homoe page" do
+      it "redirects to the home page" do
         post :create, :session => valid_attributes
         response.should redirect_to(root_url)
       end
