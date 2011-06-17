@@ -14,6 +14,9 @@ Then /^the signed in user should be "([^"]*)"$/ do |email|
   User.current.should == user
 end
 
+Given /^Nobody is signed in$/ do
+  User.current = nil
+end
 
 Given /^I am signed in as "([^"]*)"$/ do |email|
   email = email
