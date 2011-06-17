@@ -43,6 +43,7 @@ module SokRailMongo
     
     config.generators do |g|
       g.orm = :mongo_mapper
+      g.test = :rspec
     end
   end
 end

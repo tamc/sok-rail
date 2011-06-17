@@ -15,8 +15,8 @@ Then /^the signed in user should be "([^"]*)"$/ do |email|
 end
 
 
-Given /^I am signed in$/ do
-  email = "test@test.com"
+Given /^I am signed in as "([^"]*)"$/ do |email|
+  email = email
   password = "password"
   @user = User.create!(:email => email, :password => password, :password_confirmation => password)
   User.current = @user

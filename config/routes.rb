@@ -1,4 +1,6 @@
 SokRailMongo::Application.routes.draw do
+  resources :pages
+
   resources :users do
     member do
       get 'created'
@@ -7,7 +9,7 @@ SokRailMongo::Application.routes.draw do
 
   resources :sessions
   
-  root :to => 'pages#new'
+  root :to => 'pages#home'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

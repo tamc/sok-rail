@@ -18,6 +18,8 @@ module NavigationHelpers
       created_user_path(@user)
     when /the new page page/
       new_page_path
+    when /the "([^"]+)" page/
+      page_path Page.first(:title => $1)
 
 
     # Add more mappings here.
