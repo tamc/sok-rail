@@ -1,6 +1,28 @@
-Given /^I sign in with email "([^"]*)" and password "([^"]*)"$/ do |arg1, arg2|
-  pending # express the regexp above with the code you wish you had
+Given /^I sign in with email "([^"]*)" and password "([^"]*)"$/ do |email, password|
+  fill_in 'session_email', :with => email
+  fill_in 'session_password', :with => password
+  click_button 'Log in'
 end
+
+Given /^There is a confirmed user with email "([^"]*)" and password "([^"]*)"$/ do |email,password|
+  @user = User.create!(:email => email, :password => password, :password_confirmation => password)
+end
+
+Then /^the signed in user should be "([^"]*)"$/ do |email|
+  user = User.first(:email => email)
+  user.should_not be_nil
+  User.current.should == user
+end
+
+
+Given /^I am signed in$/ do
+  email = "test@test.com"
+  password = "password"
+  @user = User.create!(:email => email, :password => password, :password_confirmation => password)
+  User.current = @user
+end
+
+
 
 # Given /^the following sessions:$/ do |sessions|
 #   Session.create!(sessions.hashes)

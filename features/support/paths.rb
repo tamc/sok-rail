@@ -12,6 +12,12 @@ module NavigationHelpers
       '/'
     when /the new session page/
       new_session_path
+    when /the new user page/
+      new_user_path
+    when /the user created page/
+      created_user_path(@user)
+    when /the new page page/
+      new_page_path
 
 
     # Add more mappings here.
