@@ -26,12 +26,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    @session = Session.find(params[:id])
-    @session.destroy
-
-    respond_to do |format|
-      format.html { redirect_to sessions_url }
-      format.json { head :ok }
-    end
+    session['user_id'] = nil
+    User.current = nil
+    flash[:notice] = "You have been signed out"
+    redirect_to new_session_url
   end
 end

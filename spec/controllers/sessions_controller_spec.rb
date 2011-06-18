@@ -50,19 +50,22 @@ describe SessionsController do
     end
   end
 
-  # describe "DELETE destroy" do
-  #   it "destroys the requested session" do
-  #     session = Session.create! valid_attributes
-  #     expect {
-  #       delete :destroy, :id => session.id.to_s
-  #     }.to change(Session, :count).by(-1)
-  #   end
-  # 
-  #   it "redirects to the sessions list" do
-  #     session = Session.create! valid_attributes
-  #     delete :destroy, :id => session.id.to_s
-  #     response.should redirect_to(sessions_url)
-  #   end
-  # end
+  describe "DELETE destroy" do
+    before(:each) do
+      @user = User.create!(valid_attributes.merge(:password_confirmation => valid_attributes[:password]))        
+      post :create, :session => valid_attributes
+    end
+    
+    it "signs the user out" do
+      delete :destroy
+      User.current.should == nil
+      session['user_id'].should == nil
+    end
+  
+    it "redirects to the new session page" do
+      delete :destroy
+      response.should redirect_to(new_session_url)
+    end
+  end
 
 end

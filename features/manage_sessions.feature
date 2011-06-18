@@ -18,3 +18,8 @@ Feature: Manage sessions
     Then the signed in user should be "tom@test.fake"
     Then I should be on the new page page
 
+  Scenario: End a session
+    Given I am signed in as "test@test.site"
+    When I follow "Sign out"
+    Then I should see "You have been signed out"
+    And I should be on the new session page

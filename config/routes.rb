@@ -7,7 +7,7 @@ SokRailMongo::Application.routes.draw do
     end
   end
 
-  resources :sessions
+  resource :session
   
   match ':id' => "pages#show", :as => :page
   

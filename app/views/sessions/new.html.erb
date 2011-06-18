@@ -1,9 +1,10 @@
 <h1>Welcome to the Soks Wiki</h1>
+<div id='flash'><%= flash[:notice] %></div>
 
-<%= form_for(@session) do |f| %>
+<%= form_for(@session,:url => session_url) do |f| %>
   <% if @session.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@session.errors.count, "error") %> prohibited this session from being saved:</h2>
+      <h2><%= pluralize(@session.errors.count, "problems") %> prevented you from signing in:</h2>
 
       <ul>
       <% @session.errors.full_messages.each do |msg| %>
