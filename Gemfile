@@ -24,10 +24,10 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :test do
-  # Pretty printed test output
+  gem 'ruby-debug19', :require => 'ruby-debug'
+  gem "launchy"
   gem "database_cleaner"
   gem 'turn', :require => false
   gem "rspec-rails"
